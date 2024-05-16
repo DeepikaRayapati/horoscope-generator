@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrology Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('login.png'); /* Adjust the path to your background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background color */
+    padding: 40px;
+    border-radius: 20px; /* Increased border-radius for rounded corners */
+    text-align: center;
+    max-width: 400px; /* Limit the width of the container */
+    width: 80%; /* Set width to 80% of the viewport width */
+  }
+  .login-container h2 {
+    margin-top: 0;
+  }
+  .login-form input {
+    width: 100%;
+    padding: 15px; /* Increased padding for larger input fields */
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px; /* Increased border-radius for rounded corners */
+  }
+  .login-form select {
+    width: 100%;
+    padding: 15px; /* Increased padding for larger select fields */
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px; /* Increased border-radius for rounded corners */
+  }
+  .login-form button {
+    width: 100%;
+    padding: 15px; /* Increased padding for larger button */
+    border: none;
+    border-radius: 8px; /* Increased border-radius for rounded corners */
+    background-color: #000; /* Black button background color */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .login-form button:hover {
+    background-color: #333; /* Darker black on hover */
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Astrology Login</h2>
+  <form class="login-form" onsubmit="return login()">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="date" id="dob" required><br>
+    <input type="time" id="timeOfBirth" required><br>
+    <select id="gender" required>
+      <option value="" disabled selected>Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br>
+    <input type="text" id="place" placeholder="Place of Living" required><br>
+    <input type="text" id="qualification" placeholder="Present Qualification" required><br>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  function login() {
+    var name = document.getElementById("name").value;
+    var dob = document.getElementById("dob").value;
+    var timeOfBirth = document.getElementById("timeOfBirth").value;
+    var gender = document.getElementById("gender").value;
+    var place = document.getElementById("place").value;
+    var qualification = document.getElementById("qualification").value;
+
+    // Redirect to the main page with query parameters
+    window.location.href = "main.html?name=" + encodeURIComponent(name) +
+                            "&dob=" + encodeURIComponent(dob) +
+                            "&timeOfBirth=" + encodeURIComponent(timeOfBirth) +
+                            "&gender=" + encodeURIComponent(gender) +
+                            "&place=" + encodeURIComponent(place) +
+                            "&qualification=" + encodeURIComponent(qualification);
+    return false; // Prevent form submission
+  }
+</script>
+
+</body>
+</html>

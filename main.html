@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bmain.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    height: 100vh; /* Ensure full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align header to the top */
+  }
+  header {
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Ensure relative positioning for absolute elements */
+    z-index: 1; /* Ensure header stays on top */
+    background: none; /* Remove background color */
+    width: 100%; /* Ensure header spans the full width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    margin-bottom: auto; /* Push the header to the top */
+  }
+  header img {
+    width: 150px; /* Increase logo width */
+    height: auto;
+    margin-left: 20px; /* Add margin to the left of the logo */
+  }
+  header h1 {
+    margin: 0;
+    font-size: 30px; /* Increase font size */
+  }
+  nav {
+    display: flex;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  nav a:hover {
+    background-color: #555;
+  }
+  main {
+    display: none; /* Initially hide main content */
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    z-index: 2; /* Ensure main content stays on top */
+  }
+  .about-us {
+    background-color: rgba(0, 0, 0, 0.7); /* Add background color */
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <img src="logo.png" alt="Logo">
+    <h1>The Pattern</h1>
+  </div>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="astrocal.html">Astrocal</a>
+    <a href="lodin.html">Login</a>
+    <a href="#" id="about-link">About Us</a>
+  </nav>
+</header>
+
+<main>
+  <div class="about-us">
+    <h2>About Us</h2>
+    <p>We are dedicated to providing information about zodiac signs, horoscopes, and astrology.</p>
+    <h3>Zodiac Signs</h3>
+    <p>There are 12 zodiac signs, each representing different personality traits and characteristics. These signs are Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces.</p>
+    <h3>Zodiac Calculator</h3>
+    <p>Use our zodiac calculator to find your zodiac sign based on your birth date.</p>
+    <h3>Horoscope</h3>
+    <p>Get daily, weekly, monthly, and yearly horoscope predictions tailored to your zodiac sign.</p>
+  </div>
+</main>
+
+<script>
+  document.getElementById("about-link").addEventListener("click", function() {
+    document.querySelector("main").style.display = "block"; // Show main content
+    document.querySelector("header").style.display = "none"; // Hide header
+  });
+</script>
+
+</body>
+</html>

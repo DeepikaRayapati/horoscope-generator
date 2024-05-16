@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aries</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('baries.png');    
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h1, h2, p {
+    color: #333;
+  }
+  .aries-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+  }
+  .prediction-select {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Aries Predictions</h1>
+  <img src="saries.png" alt="Aries Image" class="aries-image">
+  <div class="prediction-select">
+    <label for="predictionType">Select Prediction Type:</label>
+    <select id="predictionType">
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+  <div id="predictions">
+    <!-- Predictions will be dynamically updated here -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const predictionTypeSelect = document.getElementById("predictionType");
+    const predictionsDiv = document.getElementById("predictions");
+
+    predictionTypeSelect.addEventListener("change", function() {
+      const selectedPredictionType = predictionTypeSelect.value;
+      const predictions = getAriesPredictions(selectedPredictionType);
+      predictionsDiv.innerHTML = predictions;
+    });
+
+    function getAriesPredictions(predictionType) {
+      let predictions = "";
+      switch(predictionType) {
+        case "weekly":
+          predictions = `
+            <h2>Weekly Predictions for Aries</h2>
+            <p>In the upcoming week, Aries individuals can expect favorable developments in various aspects of their lives. 
+            In terms of health, maintaining a balanced lifestyle and focusing on regular exercise and nutritious diet will lead to increased energy levels and overall well-being. 
+            Financially, Aries may experience stability and potential opportunities for financial growth. It's advisable to remain cautious with investments and expenditures to ensure long-term financial security. 
+            On the family front, harmony and understanding will prevail, fostering stronger bonds and emotional connections with loved ones. 
+            Professional progress is indicated, with opportunities for career advancement and recognition. Aries should seize these opportunities with confidence and assertiveness, while also maintaining a balance between work and personal life.</p>
+          `;
+          break;
+        case "monthly":
+          predictions = `
+            <h2>Monthly Predictions for Aries</h2>
+            <p>In the upcoming month, Aries individuals may find themselves tackling new challenges and opportunities. 
+            Health-wise, it's essential to maintain a healthy lifestyle and pay attention to any signs of stress or fatigue. 
+            Financially, there may be fluctuations, so it's important to budget wisely and avoid impulsive spending. 
+            Family dynamics may undergo some changes, but open communication and understanding will help navigate any conflicts. 
+            Professionally, Aries should focus on honing their skills and networking to advance their career goals. Overall, with determination and perseverance, Aries can overcome obstacles and achieve success.</p>
+          `;
+          break;
+        case "yearly":
+          predictions = `
+            <h2>Yearly Predictions for Aries</h2>
+            <p>The upcoming year holds promise for Aries individuals, with opportunities for growth and transformation. 
+            Health-wise, it's crucial to prioritize self-care and regular check-ups to maintain overall well-being. 
+            Financially, Aries may experience periods of both stability and uncertainty, so it's essential to plan for the long term and stay adaptable. 
+            Family relationships will deepen, bringing joy and fulfillment, although there may be occasional conflicts that require patience and understanding. 
+            Professionally, Aries will be driven to pursue their ambitions and take on new challenges, leading to significant achievements and recognition. With determination and resilience, Aries can make the most of the opportunities that come their way.</p>
+          `;
+          break;
+        default:
+          predictions = "No predictions available.";
+      }
+      return predictions;
+    }
+  });
+</script>
+
+</body>
+</html>

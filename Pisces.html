@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pisces Predictions</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bpisces.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h1, h2, p {
+    color: #333;
+  }
+  .pisces-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+  }
+  .prediction-select {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Pisces Predictions</h1>
+  <img src="spisces.png" alt="Pisces Image" class="pisces-image">
+  <div class="prediction-select">
+    <label for="predictionType">Select Prediction Type:</label>
+    <select id="predictionType">
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+  <div id="predictions">
+    <!-- Predictions will be dynamically updated here -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const predictionTypeSelect = document.getElementById("predictionType");
+    const predictionsDiv = document.getElementById("predictions");
+
+    predictionTypeSelect.addEventListener("change", function() {
+      const selectedPredictionType = predictionTypeSelect.value;
+      const predictions = getPiscesPredictions(selectedPredictionType);
+      predictionsDiv.innerHTML = predictions;
+    });
+
+    function getPiscesPredictions(predictionType) {
+      let predictions = "";
+      switch(predictionType) {
+        case "weekly":
+          predictions = `
+            <h2>Weekly Predictions for Pisces</h2>
+            <p>This week, Pisces individuals may find themselves focusing on their emotional well-being and inner growth. 
+            Health-wise, it's important to listen to the body's signals and prioritize rest and relaxation. 
+            Financially, there may be opportunities for creative ventures or unexpected financial gains, so it's important to remain open to new possibilities. 
+            Family interactions will be harmonious and supportive, providing a sense of comfort and security. 
+            Professionally, Pisces individuals may feel inspired to pursue their passions and explore new career paths.</p>
+          `;
+          break;
+        case "monthly":
+          predictions = `
+            <h2>Monthly Predictions for Pisces</h2>
+            <p>This month, Pisces individuals may experience a period of spiritual growth and self-discovery. 
+            Health-wise, it's essential to prioritize self-care and engage in activities that nourish the soul. 
+            Financially, there may be opportunities for financial stability and abundance, with potential for unexpected windfalls or opportunities for financial growth. 
+            Family relationships will be loving and nurturing, providing a sense of belonging and support. 
+            Professionally, Pisces may feel drawn to creative pursuits and humanitarian efforts, finding fulfillment in helping others.</p>
+          `;
+          break;
+        case "yearly":
+          predictions = `
+            <h2>Yearly Predictions for Pisces</h2>
+            <p>The upcoming year holds promise for Pisces individuals, with opportunities for personal and spiritual growth. 
+            Health-wise, it's important to prioritize both physical and emotional well-being, seeking balance and harmony in all aspects of life. 
+            Financially, Pisces may experience periods of financial stability and prosperity, with opportunities for career advancement and financial success. 
+            Family dynamics will be supportive and loving, providing a sense of security and comfort. 
+            Professionally, Pisces individuals may feel inspired to pursue their dreams and make a positive impact in the world, finding fulfillment in their work.</p>
+          `;
+          break;
+        default:
+          predictions = "No predictions available.";
+      }
+      return predictions;
+    }
+  });
+</script>
+
+</body>
+</html>

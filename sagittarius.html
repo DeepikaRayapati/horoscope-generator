@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sagittarius Predictions</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bsagittarius.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h1, h2, p {
+    color: #333;
+  }
+  .sagittarius-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+  }
+  .prediction-select {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Sagittarius Predictions</h1>
+  <img src="ssagittarius.png" alt="Sagittarius Image" class="sagittarius-image">
+  <div class="prediction-select">
+    <label for="predictionType">Select Prediction Type:</label>
+    <select id="predictionType">
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+  <div id="predictions">
+    <!-- Predictions will be dynamically updated here -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const predictionTypeSelect = document.getElementById("predictionType");
+    const predictionsDiv = document.getElementById("predictions");
+
+    predictionTypeSelect.addEventListener("change", function() {
+      const selectedPredictionType = predictionTypeSelect.value;
+      const predictions = getSagittariusPredictions(selectedPredictionType);
+      predictionsDiv.innerHTML = predictions;
+    });
+
+    function getSagittariusPredictions(predictionType) {
+      let predictions = "";
+      switch(predictionType) {
+        case "weekly":
+          predictions = `
+            <h2>Weekly Predictions for Sagittarius</h2>
+            <p>This week, Sagittarius individuals may find themselves seeking new experiences and adventures. 
+            Health-wise, it's important to stay active and maintain a positive mindset. 
+            Financially, there may be opportunities for unexpected gains or investments, so it's wise to be open to new opportunities. 
+            Family interactions will be lively and dynamic, fostering a sense of excitement and togetherness. 
+            Professionally, Sagittarius individuals may feel motivated to explore new career paths or educational pursuits.</p>
+          `;
+          break;
+        case "monthly":
+          predictions = `
+            <h2>Monthly Predictions for Sagittarius</h2>
+            <p>This month, Sagittarius individuals may experience a period of growth and expansion. 
+            Health-wise, it's essential to prioritize self-care and physical activity. 
+            Financially, there may be opportunities for financial gains or travel-related investments. 
+            Family relationships will be supportive and uplifting, providing a sense of joy and connection. 
+            Professionally, Sagittarius may need to focus on setting ambitious goals and pursuing opportunities with enthusiasm.</p>
+          `;
+          break;
+        case "yearly":
+          predictions = `
+            <h2>Yearly Predictions for Sagittarius</h2>
+            <p>The upcoming year holds promise for Sagittarius individuals, with opportunities for personal and professional development. 
+            Health-wise, it's important to prioritize both physical and mental well-being, seeking balance and relaxation. 
+            Financially, Sagittarius may experience periods of growth and prosperity, with opportunities for financial stability and abundance. 
+            Family dynamics will be supportive and nurturing, providing a sense of security and love. 
+            Professionally, Sagittarius individuals may achieve new milestones and explore new horizons in their careers.</p>
+          `;
+          break;
+        default:
+          predictions = "No predictions available.";
+      }
+      return predictions;
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taurus Predictions</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('btaurus.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h1, h2, p {
+    color: #333;
+  }
+  .taurus-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+  }
+  .prediction-select {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Taurus Predictions</h1>
+  <img src="staurus.png" alt="Taurus Image" class="taurus-image">
+  <div class="prediction-select">
+    <label for="predictionType">Select Prediction Type:</label>
+    <select id="predictionType">
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+  <div id="predictions">
+    <!-- Predictions will be dynamically updated here -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const predictionTypeSelect = document.getElementById("predictionType");
+    const predictionsDiv = document.getElementById("predictions");
+
+    predictionTypeSelect.addEventListener("change", function() {
+      const selectedPredictionType = predictionTypeSelect.value;
+      const predictions = getTaurusPredictions(selectedPredictionType);
+      predictionsDiv.innerHTML = predictions;
+    });
+
+    function getTaurusPredictions(predictionType) {
+      let predictions = "";
+      switch(predictionType) {
+        case "weekly":
+          predictions = `
+            <h2>Weekly Predictions for Taurus</h2>
+            <p>In the upcoming week, Taurus individuals may find themselves focusing on personal growth and self-improvement. 
+            Health-wise, it's a good time to prioritize exercise and healthy eating habits. 
+            Financially, there may be opportunities for increased income or prudent investments. 
+            Family interactions will be enjoyable and supportive, strengthening emotional bonds. 
+            Professionally, Taurus individuals may need to stay organized and proactive to achieve their career goals.</p>
+          `;
+          break;
+        case "monthly":
+          predictions = `
+            <h2>Monthly Predictions for Taurus</h2>
+            <p>In the upcoming month, Taurus individuals may experience a period of stability and growth. 
+            Health-wise, it's important to maintain a balance between work and relaxation to avoid burnout. 
+            Financially, there may be opportunities for long-term financial planning and savings. 
+            Family relationships will be harmonious, providing a sense of security and comfort. 
+            Professionally, Taurus individuals may receive recognition for their hard work and dedication.</p>
+          `;
+          break;
+        case "yearly":
+          predictions = `
+            <h2>Yearly Predictions for Taurus</h2>
+            <p>The upcoming year holds promise for Taurus individuals, with opportunities for personal and professional development. 
+            Health-wise, it's essential to prioritize self-care and mental well-being. 
+            Financially, Taurus may experience periods of both stability and growth, with opportunities for investments and financial planning. 
+            Family dynamics will be positive and nurturing, fostering a sense of belonging and support. 
+            Professionally, Taurus individuals may embark on new career paths or take on leadership roles, leading to success and fulfillment.</p>
+          `;
+          break;
+        default:
+          predictions = "No predictions available.";
+      }
+      return predictions;
+    }
+  });
+</script>
+
+</body>
+</html>

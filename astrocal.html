@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AstroCalc</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 0.5s ease-in-out;
+        /* Add background image */
+        background-image: url('bhaome.png');
+    }
+    .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+</style>
+<script>
+function getZodiacSign() {
+    var birthday = new Date(document.getElementById("birthdate").value);
+    var month = birthday.getMonth() + 1;
+    var day = birthday.getDate();
+
+    var zodiacSigns = [
+        "Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini",
+        "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"
+    ];
+
+    var zodiacDates = [
+        20, 19, 20, 20, 21, 21, 23, 23, 23, 23, 22, 22
+    ];
+
+    var signIndex = (month === 1 && day <= zodiacDates[0]) || (month === 12 && day > zodiacDates[11]) ? 0 :
+                    (month === 2 && day <= zodiacDates[1]) || (month === 1 && day > zodiacDates[0]) ? 1 :
+                    (month === 3 && day <= zodiacDates[2]) || (month === 2 && day > zodiacDates[1]) ? 2 :
+                    (month === 4 && day <= zodiacDates[3]) || (month === 3 && day > zodiacDates[2]) ? 3 :
+                    (month === 5 && day <= zodiacDates[4]) || (month === 4 && day > zodiacDates[3]) ? 4 :
+                    (month === 6 && day <= zodiacDates[5]) || (month === 5 && day > zodiacDates[4]) ? 5 :
+                    (month === 7 && day <= zodiacDates[6]) || (month === 6 && day > zodiacDates[5]) ? 6 :
+                    (month === 8 && day <= zodiacDates[7]) || (month === 7 && day > zodiacDates[6]) ? 7 :
+                    (month === 9 && day <= zodiacDates[8]) || (month === 8 && day > zodiacDates[7]) ? 8 :
+                    (month === 10 && day <= zodiacDates[9]) || (month === 9 && day > zodiacDates[8]) ? 9 :
+                    (month === 11 && day <= zodiacDates[10]) || (month === 10 && day > zodiacDates[9]) ? 10 :
+                    (month === 12 && day <= zodiacDates[11]) || (month === 11 && day > zodiacDates[10]) ? 11 : -1;
+
+    var sign = zodiacSigns[signIndex];
+    var images = [
+        "capricorn.png", "aquarius.png", "pisces.png", "aries.png",
+        "taurus.pmg", "gemini.png", "cancer.png", "leo.png",
+        "virgo.png", "libra.png", "scorpio.png", "sagittarius.png"
+    ];
+
+    document.body.style.backgroundImage = "url('images/" + images[signIndex] + "')";
+    document.getElementById("result").innerHTML = "Your Zodiac sign is: " + sign;
+}
+</script>
+</head>
+<body>
+<div class="container">
+    <h1>Zodiac Sign Calculator</h1>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate">
+    <button onclick="getZodiacSign()">Submit</button>
+    <p id="result"></p>
+</div>
+</body>
+</html>

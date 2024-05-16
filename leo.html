@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Predictions</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bleo.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h1, h2, p {
+    color: #333;
+  }
+  .leo-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+  }
+  .prediction-select {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Leo Predictions</h1>
+  <img src="sleo.png" alt="Leo Image" class="leo-image">
+  <div class="prediction-select">
+    <label for="predictionType">Select Prediction Type:</label>
+    <select id="predictionType">
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+  <div id="predictions">
+    <!-- Predictions will be dynamically updated here -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const predictionTypeSelect = document.getElementById("predictionType");
+    const predictionsDiv = document.getElementById("predictions");
+
+    predictionTypeSelect.addEventListener("change", function() {
+      const selectedPredictionType = predictionTypeSelect.value;
+      const predictions = getLeoPredictions(selectedPredictionType);
+      predictionsDiv.innerHTML = predictions;
+    });
+
+    function getLeoPredictions(predictionType) {
+      let predictions = "";
+      switch(predictionType) {
+        case "weekly":
+          predictions = `
+            <h2>Weekly Predictions for Leo</h2>
+            <p>This week, Leo individuals may find themselves filled with energy and enthusiasm. 
+            Health-wise, it's important to maintain a balance between physical activity and relaxation. 
+            Financially, there may be opportunities for increased income or wise investments. 
+            Family interactions will be joyful and supportive, providing a sense of warmth and belonging. 
+            Professionally, Leo individuals may receive recognition for their leadership skills and creative ideas.</p>
+          `;
+          break;
+        case "monthly":
+          predictions = `
+            <h2>Monthly Predictions for Leo</h2>
+            <p>This month, Leo individuals may experience a period of growth and expansion. 
+            Health-wise, it's essential to prioritize self-care and listen to the body's needs. 
+            Financially, there may be opportunities for financial gains or investments in personal growth. 
+            Family relationships will be harmonious and loving, providing a sense of security and comfort. 
+            Professionally, Leo may need to step into leadership roles and take charge of their career path.</p>
+          `;
+          break;
+        case "yearly":
+          predictions = `
+            <h2>Yearly Predictions for Leo</h2>
+            <p>The upcoming year holds promise for Leo individuals, with opportunities for personal and professional success. 
+            Health-wise, it's important to prioritize both physical and mental well-being, seeking balance and relaxation. 
+            Financially, Leo may experience periods of growth and prosperity, with opportunities for financial stability and abundance. 
+            Family dynamics will be supportive and nurturing, providing a sense of security and love. 
+            Professionally, Leo individuals may achieve new heights in their careers, receiving recognition and opportunities for advancement.</p>
+          `;
+          break;
+        default:
+          predictions = "No predictions available.";
+      }
+      return predictions;
+    }
+  });
+</script>
+
+</body>
+</html>
